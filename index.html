@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Microsoft academic graph by abhie19</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Microsoft academic graph</h1>
+        <h2>Citation recommendation of 80 Million papers using Graph DB(Neo-4J)</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/abhie19/MS_Academic_Graph/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/abhie19/MS_Academic_Graph/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/abhie19/MS_Academic_Graph" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <p>Hello folks! Today, I will share another cool project I had been working on during my semester. It's called "CITATION RECOMMENDATION IN MICROSOFT ACADEMIC GRAPH". </p>
+
+<p>Citations have always been the best way to know popularity of a paper and it's author(s). The more the number of citations, the more popular and widely accepted the paper is. Google scholar does a great job of keeping authors and their followers keeping abreast with the status of paper/author citations. 
+So, what is a citation? In it's most rudimentary form, citation is a reference to a published paper (and author subsequently) in a paper being ready to be published. It's done in order to give attributions to others work which have been used while writing the current paper. It's a great practice, but not always an easy one. For example, if you are writing a paper on Neural Networks, their is so much information out there that you will be overwhelmed if you had to decide what all papers you should cite (since you would be going through a lot of them). To make this task easier, comes "CITATION RECOMMENDATION". The idea is to provide papers that an author should cite in his current work. Simple! Right? Well...not so much. There's just too many papers out there to be recommended that only a good algorithm will be able to give the best answers with minimum information. We tried to build something like that with our tools and knowledge of data science &amp; big data.</p>
+
+<p>To build this recommendation system, we used a dataset provided by <a href="http://research.microsoft.com/en-us/projects/mag/">Microsoft Academic Graph</a> initiative. Microsoft researchers have done a great job explaining how and why the data was curated in their <a href="http://www.www2015.it/documents/proceedings/companion/p243.pdf">paper</a>. The data (99GB uncompressed) exceeds 83 Million papers by 20 Million authors from all across the globe (literally). Now, even though the figures sound gargantuan, they really aren't in Big Data world. But, it's good enough to get us started. Anyways, I won't be able to use all the data on my personal machine (a powerful yet restricted Macbook Air). So, let's go ahead and start our ANALYSIS!</p>
+
+<p>As the most revered data scientist say, 'know the data', the obvious first step (assuming it's clean data) would be to do 'Exploratory Data Analysis or EDA'. Sounds cool. Right? It indeed is, because this is where we see all the surprises that the data gives us- weird/missing values, strange patterns, seemingly impossible correlations and so on. </p>
+
+<p>The EDA on our data gives us some really good results.</p>
+
+<p>In order to take this to the next level, we created a regression model to check out the dependent and independent values, see correlations and find out which attributes of the paper would help us most during recommendation. Even though the initial regression model: </p>
+
+<blockquote>
+<p>citationcount ~ papercnt + jrnl + confront
+ rejected the null hypothesis with a small (&amp; controversial) p-value, it did't prove really effective in the later models.</p>
+</blockquote>
+
+<p><em>Note: This was all done with mongoDB as database &amp; not graph DB Neo4J.</em></p>
+
+<p>Now that we have enough familiarity with the data, we could go ahead and start our experiments using a graphDB. For our purpose, we used Neo4J, the de-facto GraphDB currently. It has a community edition available (free!!) and lots of help on forums. Neo4J uses it's own query language called - "CYPHER" (cool name for sure). CYPHER is pretty easy to understand, use and has similarity with SQL. Neo4J has a very cool UI wherein you can put in your queries and see the results right on the webpage as interactive graph/table/JSON. The graphs look really neat and organized, but it comes at the cost of clutter and node restrictions, since you can only display (&amp; interpret) certain number of nodes. Although, the number of nodes on the graph is not restricted, but once you go to 100+ nodes it becomes uninterpretable (&amp; super slow). But, this doesn't kill the purpose of GraphDB in anyway, since you can still store million of nodes in the database and do your analysis by looking at nodes, properties and relationships as awesome graphs (yup, they look pretty).</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
