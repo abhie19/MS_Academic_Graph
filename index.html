@@ -19,19 +19,22 @@
     </section>
 
     <section class="main-content">
-      <p>Hello folks! Today, I will share another cool project I had been working on during my semester. It's called "CITATION RECOMMENDATION IN MICROSOFT ACADEMIC GRAPH". </p>
+      <h2>
+<a id="hello-folks-today-i-will-share-another-cool-project-i-had-been-working-on-during-my-semester-its-called-citation-recommendation-in-microsoft-academic-graph" class="anchor" href="#hello-folks-today-i-will-share-another-cool-project-i-had-been-working-on-during-my-semester-its-called-citation-recommendation-in-microsoft-academic-graph" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hello folks! Today, I will share another cool project I had been working on during my semester. It's called "CITATION RECOMMENDATION IN MICROSOFT ACADEMIC GRAPH".</h2>
 
 <p>Citations have always been the best way to know popularity of a paper and it's author(s). The more the number of citations, the more popular and widely accepted the paper is. Google scholar does a great job of keeping authors and their followers keeping abreast with the status of paper/author citations. 
 So, what is a citation? In it's most rudimentary form, citation is a reference to a published paper (and author subsequently) in a paper being ready to be published. It's done in order to give attributions to others work which have been used while writing the current paper. It's a great practice, but not always an easy one. For example, if you are writing a paper on Neural Networks, their is so much information out there that you will be overwhelmed if you had to decide what all papers you should cite (since you would be going through a lot of them). To make this task easier, comes "CITATION RECOMMENDATION". The idea is to provide papers that an author should cite in his current work. Simple! Right? Well...not so much. There's just too many papers out there to be recommended that only a good algorithm will be able to give the best answers with minimum information. We tried to build something like that with our tools and knowledge of data science &amp; big data.</p>
 
-<p>To build this recommendation system, we used a dataset provided by <a href="http://research.microsoft.com/en-us/projects/mag/">Microsoft Academic Graph</a> initiative. Microsoft researchers have done a great job explaining how and why the data was curated in their <a href="http://www.www2015.it/documents/proceedings/companion/p243.pdf">paper</a>. The data (99GB uncompressed) exceeds 83 Million papers by 20 Million authors from all across the globe (literally).
-<img src="https://raw.githubusercontent.com/abhie19/MS_Academic_Graph/master/Images/Dataset%20decrip.png" alt="Dataset description"></p>
+<p>To build this recommendation system, we used a dataset provided by <a href="http://research.microsoft.com/en-us/projects/mag/">Microsoft Academic Graph</a> initiative. Microsoft researchers have done a great job explaining how and why the data was curated in their <a href="http://www.www2015.it/documents/proceedings/companion/p243.pdf">paper</a>. The data (99GB uncompressed) exceeds 83 Million papers by 20 Million authors from all across the globe (literally).</p>
+
+<p><img src="https://raw.githubusercontent.com/abhie19/MS_Academic_Graph/master/Images/Dataset%20decrip.png" alt="Dataset description"></p>
 
 <p>Now, even though the figures sound gargantuan, they really aren't in Big Data world. But, it's good enough to get us started. Anyways, I won't be able to use all the data on my personal machine (a powerful yet restricted Macbook Air). So, let's go ahead and start our ANALYSIS!</p>
 
 <p>As the most revered data scientist say, 'know the data', the obvious first step (assuming it's clean data) would be to do 'Exploratory Data Analysis or EDA'. Sounds cool. Right? It indeed is, because this is where we see all the surprises that the data gives us- weird/missing values, strange patterns, seemingly impossible correlations and so on. </p>
 
-<p>The EDA on our data gives us some really good results.</p>
+<h2>
+<a id="the-eda-on-our-data-gives-us-some-really-good-results" class="anchor" href="#the-eda-on-our-data-gives-us-some-really-good-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The EDA on our data gives us some really good results.</h2>
 
 <p><img src="https://raw.githubusercontent.com/abhie19/MS_Academic_Graph/master/Images/Wordcloud.png" alt="Word Cloud"></p>
 
@@ -53,12 +56,13 @@ So, what is a citation? In it's most rudimentary form, citation is a reference t
 
 <p>Okay, so my hypothesis holds true, the rank of papers do matter.</p>
 
-<p>In order to take this to the next level, we created a regression model to check out the dependent and independent values, see correlations and find out which attributes of the paper would help us most during recommendation. Even though the initial regression model: </p>
+<p>In order to take this to the next level, we created a <em>regression model</em> to check out the dependent and independent values, see correlations and find out which attributes of the paper would help us most during recommendation. Even though the initial regression model: </p>
 
 <blockquote>
-<p>citationcount ~ papercnt + jrnl + confront
- rejected the null hypothesis with a small (&amp; controversial) p-value, it did't prove really effective in the later models.</p>
+<p>citationcount ~ papercnt + jrnl + confront</p>
 </blockquote>
+
+<p>rejected the null hypothesis with a small (&amp; controversial) p-value, it did't prove really effective in the later models.</p>
 
 <p><em>Note: This was all done with mongoDB as database &amp; not graph DB Neo4J.</em></p>
 
@@ -66,17 +70,20 @@ So, what is a citation? In it's most rudimentary form, citation is a reference t
 
 <p>Following is the schema of our graph.</p>
 
-<p><img src="https://raw.githubusercontent.com/abhie19/MS_Academic_Graph/master/Images/Schema.png" alt="Schema">
-<img src="https://github.com/abhie19/MS_Academic_Graph/blob/master/Images/GraphSchema.png" alt="Graph Example"></p>
+<p><img src="https://raw.githubusercontent.com/abhie19/MS_Academic_Graph/master/Images/Schema.png" alt="Schema"></p>
 
-<p>Evaluation:</p>
+<p><img src="https://raw.githubusercontent.com/abhie19/MS_Academic_Graph/blob/master/Images/GraphSchema.png" alt="Graph Example"></p>
+
+<h2>
+<a id="evaluation" class="anchor" href="#evaluation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Evaluation:</h2>
 
 <p>In order to evaluate the performance of our recommendation system, we use Precision and Recall as the metric. For a given paper, we compare the existing citations with the ones recommended by our system. The details could be found in the report.</p>
 
 <p>Precision and recall comparison based on number of papers considered:
 <img src="https://raw.githubusercontent.com/abhie19/MS_Academic_Graph/master/Images/Evaluation.png" alt="Precision &amp; Recall"></p>
 
-<p>Conclusion:</p>
+<h2>
+<a id="conclusion" class="anchor" href="#conclusion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Conclusion:</h2>
 
 <p>We successfully completed the task of paper citation recommendation. We got the best accuracy of 18% when we varied the number of recommended citations to 60. We believe this result can be improved by considered additional features (especially paper abstract/content for topic modeling) provided in the dataset. </p>
 
